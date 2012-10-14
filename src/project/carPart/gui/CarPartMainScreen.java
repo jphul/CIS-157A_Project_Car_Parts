@@ -85,6 +85,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         carModel.setFont(carModel.getFont().deriveFont(carModel.getFont().getStyle() & ~java.awt.Font.BOLD));
         carModel.setDoubleBuffered(true);
+        carModel.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                carModelItemStateChanged(evt);
+            }
+        });
         carModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carModelActionPerformed(evt);
@@ -98,7 +103,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         carMake.setFont(carMake.getFont().deriveFont(carMake.getFont().getStyle() & ~java.awt.Font.BOLD));
         carMake.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carMake()));
-        carMake.setSelectedIndex(-1);
         carMake.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 populateCarMakeMenu(evt);
@@ -255,12 +259,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             Object carModel = this.carModel.getSelectedItem();
             Object carMake = this.carMake.getSelectedItem();
 
-            if(carMake != null && carModel != null) { //if not null, let's update the year menu
+            if (carMake != null && carModel != null) { //if not null, let's update the year menu
+                System.out.println("attempting to update car year for: " + carMake.toString() + " , " + carModel.toString());
                 carYear.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carYears(carMake.toString(), carModel.toString())));
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println(e.toString());
         }
+        carYear.setEnabled(true);
     }//GEN-LAST:event_carModelChanged
 
     private void carModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carModelActionPerformed
@@ -271,6 +277,24 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private void populateCarMakeMenu(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_populateCarMakeMenu
         carMake.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carMake()));
     }//GEN-LAST:event_populateCarMakeMenu
+
+    private void carModelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_carModelItemStateChanged
+        // TODO add your handling code here:
+        carYear.setEnabled(false);
+        try {
+            //grab the values as objects from the drop downs
+            Object carModel = this.carModel.getSelectedItem();
+            Object carMake = this.carMake.getSelectedItem();
+
+            if(carMake != null && carModel != null) { //if not null, let's update the year menu
+                System.out.println("attempting to update car year for: " + carMake.toString() + " , " + carModel.toString());
+                carYear.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carYears(carMake.toString(), carModel.toString())));
+            }
+        } catch(Exception e) {
+            System.err.println(e.toString());
+        }
+        carYear.setEnabled(true);
+    }//GEN-LAST:event_carModelItemStateChanged
 
     /**
      * @param args the command line arguments

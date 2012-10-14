@@ -22,8 +22,9 @@ public class DBQuery {
     }
 
     private static String getMakeQuery() {
-        //return "select Distinct maker from cmakers order by maker ASC";
-        return "select Distinct mshort from cmakers order by mshort ASC";
+        String query = "select distinct mshort from cmakers order by mshort ASC";
+        System.out.println(query);
+        return query;
     }
 
     public static ResultSet getMakeMenuItems() {
@@ -31,7 +32,9 @@ public class DBQuery {
     }
 
     private static String getModelQuery(String carModel) {
-        return "select Distinct model from apl" + carModel;
+        String query = "select Distinct model from apl" + carModel;
+        System.out.println(query);
+        return query;
     }
 
     public static ResultSet getModelMenuItems(String carMake) {
@@ -39,7 +42,9 @@ public class DBQuery {
     }
 
     private static String getYearQuery(String carMake, String carModel) {
-        return "select distinct year from APL" + carMake + " where MODEL='" + carModel + "'";
+        String query = "select distinct year from APL" + carMake + " where MODEL='" + carModel + "'";
+        System.out.println(query);
+        return query;
     }
 
     public static ResultSet getYears(String carMake, String carModel) {
@@ -59,7 +64,9 @@ public class DBQuery {
     }
 
     private static String getPartQuery(int partNumber) {
-        return "select * from rdimmod where P_Number in (select MOD4 from radcrx where rlink=" + partNumber + ")";
+        String query = "select * from rdimmod where P_Number in (select MOD4 from radcrx where rlink=" + partNumber + ")";
+        System.out.println(query);
+        return query;
     }
     
     public static ResultSet getTablePartDesc(int partNumber) {
