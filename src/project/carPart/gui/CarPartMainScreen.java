@@ -5,11 +5,8 @@
 package project.carPart.gui;
 
 
-import java.sql.*;
 import project.carPart.query_db.*;
 import project.carPart.code.*;
-import javax.swing.table.*;
-
 
 /**
  *
@@ -57,6 +54,12 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_engineDesc = new javax.swing.JTable();
         frameVendor = new javax.swing.JInternalFrame();
+        jLabel7 = new javax.swing.JLabel();
+        partVendorComboBox = new javax.swing.JComboBox();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        partNumberComboBox = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,7 +166,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(carYear, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 203, Short.MAX_VALUE))
+                        .addGap(0, 290, Short.MAX_VALUE))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
         );
@@ -187,7 +190,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -195,15 +198,74 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         frameVendor.setVisible(true);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Vendors");
+
+        partVendorComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_partVendors()));
+        partVendorComboBox.setName("vendorComboBox"); // NOI18N
+        partVendorComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                partVendorComboBoxItemStateChanged(evt);
+            }
+        });
+        partVendorComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                partVendorComboBoxKeyReleased(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.setCellSelectionEnabled(true);
+        jScrollPane4.setViewportView(jTable2);
+
+        partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        partNumberComboBox.setName("partNumberComboBox"); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setText("Part Number");
+
         javax.swing.GroupLayout frameVendorLayout = new javax.swing.GroupLayout(frameVendor.getContentPane());
         frameVendor.getContentPane().setLayout(frameVendorLayout);
         frameVendorLayout.setHorizontalGroup(
             frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
+            .addGroup(frameVendorLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(partNumberComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         frameVendorLayout.setVerticalGroup(
             frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGroup(frameVendorLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frameVendorLayout.createSequentialGroup()
+                        .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabMaker.addTab("Vendor", frameVendor);
@@ -296,6 +358,16 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         carYear.setEnabled(true);
     }//GEN-LAST:event_carModelItemStateChanged
 
+    private void partVendorComboBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_partVendorComboBoxKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_partVendorComboBoxKeyReleased
+
+    private void partVendorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_partVendorComboBoxItemStateChanged
+        // TODO add your handling code here:
+        String currentSelectedPartVendor = this.partVendorComboBox.getSelectedItem().toString();
+        this.partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_PartNumbers(currentSelectedPartVendor)));
+    }//GEN-LAST:event_partVendorComboBoxItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -344,12 +416,18 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable_engineDesc;
     private javax.swing.JTable jTable_enginePart;
+    private javax.swing.JComboBox partNumberComboBox;
+    private javax.swing.JComboBox partVendorComboBox;
     private javax.swing.JTabbedPane tabMaker;
     // End of variables declaration//GEN-END:variables
 }

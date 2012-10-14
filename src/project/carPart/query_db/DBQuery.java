@@ -30,6 +30,16 @@ public class DBQuery {
     public static ResultSet getMakeMenuItems() {
         return DBQuery(getMakeQuery());
     }
+    
+    public static ResultSet getVendorMenuItems(){
+        return DBQuery(getVendorQuery());
+    }
+    
+    private static String getVendorQuery(){
+        String query = "select distinct NAME from PARTMAKERS";
+        System.out.println(query);
+        return query;
+    }
 
     private static String getModelQuery(String carModel) {
         String query = "select Distinct model from apl" + carModel;
@@ -71,6 +81,18 @@ public class DBQuery {
     
     public static ResultSet getTablePartDesc(int partNumber) {
         return DBQuery(getPartQuery(partNumber));
+    }
+
+    public static ResultSet getVendorPartNumbers(String vendorName) 
+    {
+        return DBQuery(getPartNumberListQuery(vendorName));
+    }
+
+    private static String getPartNumberListQuery(String vendorName) 
+    {
+        String query = "select unique P_NUMBER from " + vendorName;
+        System.out.println(query);
+        return query;
     }
 
     
