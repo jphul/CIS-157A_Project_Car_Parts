@@ -102,26 +102,26 @@
                           <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEnginePart" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEngineDesc" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCarMake" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="carMake" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="carModel" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCarModel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblModelYear" min="-2" max="-2" attributes="0"/>
                                           <Component id="carYear" min="-2" pref="83" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="290" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -134,9 +134,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCarMake" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCarModel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblModelYear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -145,24 +145,24 @@
                           <Component id="carYear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEngineDesc" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="106" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEnginePart" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="184" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="152" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblCarModel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
                   <FontInfo relative="true">
-                    <Font bold="true" component="jLabel1" property="font" relativeSize="true" size="0"/>
+                    <Font bold="true" component="lblCarModel" property="font" relativeSize="true" size="0"/>
                   </FontInfo>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Car Model"/>
@@ -199,21 +199,21 @@
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="carMakeItemStateChanged"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblCarMake">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
                   <FontInfo relative="true">
-                    <Font bold="true" component="jLabel2" property="font" relativeSize="true" size="0"/>
+                    <Font bold="true" component="lblCarMake" property="font" relativeSize="true" size="0"/>
                   </FontInfo>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Car Make"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="lblModelYear">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
                   <FontInfo relative="true">
-                    <Font bold="true" component="jLabel3" property="font" relativeSize="true" size="0"/>
+                    <Font bold="true" component="lblModelYear" property="font" relativeSize="true" size="0"/>
                   </FontInfo>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Model Year"/>
@@ -252,17 +252,17 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="lblEngineDesc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
                   <FontInfo relative="true">
-                    <Font bold="true" component="jLabel4" property="font" relativeSize="true" size="0"/>
+                    <Font bold="true" component="lblEngineDesc" property="font" relativeSize="true" size="0"/>
                   </FontInfo>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Engine Description"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="lblEnginePart">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -316,7 +316,7 @@
                           <Component id="partNumberComboBox" max="32767" attributes="0"/>
                           <Component id="jLabel8" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="617" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -338,7 +338,7 @@
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane4" pref="395" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" pref="363" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

@@ -4,9 +4,12 @@
  */
 package project.carPart.gui;
 
-
 import project.carPart.query_db.*;
 import project.carPart.code.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.table.*;
 
 /**
  *
@@ -41,16 +44,16 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         tabMaker = new javax.swing.JTabbedPane();
         frameMaker = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
+        lblCarModel = new javax.swing.JLabel();
         carModel = new javax.swing.JComboBox();
         carMake = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblCarMake = new javax.swing.JLabel();
+        lblModelYear = new javax.swing.JLabel();
         carYear = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_enginePart = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblEngineDesc = new javax.swing.JLabel();
+        lblEnginePart = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_engineDesc = new javax.swing.JTable();
         frameVendor = new javax.swing.JInternalFrame();
@@ -83,8 +86,8 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         frameMaker.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         frameMaker.setVisible(true);
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel1.setText("Car Model");
+        lblCarModel.setFont(lblCarModel.getFont().deriveFont(lblCarModel.getFont().getStyle() | java.awt.Font.BOLD));
+        lblCarModel.setText("Car Model");
 
         carModel.setFont(carModel.getFont().deriveFont(carModel.getFont().getStyle() & ~java.awt.Font.BOLD));
         carModel.setDoubleBuffered(true);
@@ -117,11 +120,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel2.setText("Car Make");
+        lblCarMake.setFont(lblCarMake.getFont().deriveFont(lblCarMake.getFont().getStyle() | java.awt.Font.BOLD));
+        lblCarMake.setText("Car Make");
 
-        jLabel3.setFont(jLabel3.getFont().deriveFont(jLabel3.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel3.setText("Model Year");
+        lblModelYear.setFont(lblModelYear.getFont().deriveFont(lblModelYear.getFont().getStyle() | java.awt.Font.BOLD));
+        lblModelYear.setText("Model Year");
 
         carYear.setFont(carYear.getFont().deriveFont(carYear.getFont().getStyle() & ~java.awt.Font.BOLD));
         carYear.addActionListener(new java.awt.event.ActionListener() {
@@ -133,11 +136,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         jTable_enginePart.setFont(jTable_enginePart.getFont().deriveFont(jTable_enginePart.getFont().getStyle() & ~java.awt.Font.BOLD));
         jScrollPane2.setViewportView(jTable_enginePart);
 
-        jLabel4.setFont(jLabel4.getFont().deriveFont(jLabel4.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel4.setText("Engine Description");
+        lblEngineDesc.setFont(lblEngineDesc.getFont().deriveFont(lblEngineDesc.getFont().getStyle() | java.awt.Font.BOLD));
+        lblEngineDesc.setText("Engine Description");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Engine Part");
+        lblEnginePart.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblEnginePart.setText("Engine Part");
 
         jTable_engineDesc.setFont(jTable_engineDesc.getFont().deriveFont(jTable_engineDesc.getFont().getStyle() & ~java.awt.Font.BOLD));
         jScrollPane3.setViewportView(jTable_engineDesc);
@@ -152,21 +155,21 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(frameMakerLayout.createSequentialGroup()
                         .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
+                            .addComponent(lblEnginePart)
+                            .addComponent(lblEngineDesc)
                             .addGroup(frameMakerLayout.createSequentialGroup()
                                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(lblCarMake)
                                     .addComponent(carMake, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(carModel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
+                                    .addComponent(lblCarModel))
                                 .addGap(18, 18, 18)
                                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(lblModelYear)
                                     .addComponent(carYear, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 290, Short.MAX_VALUE))
+                        .addGap(0, 203, Short.MAX_VALUE))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
         );
@@ -175,22 +178,22 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             .addGroup(frameMakerLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(lblCarMake)
+                    .addComponent(lblCarModel)
+                    .addComponent(lblModelYear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(carMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(carModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(carYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(lblEngineDesc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(lblEnginePart)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -247,7 +250,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(partNumberComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         frameVendorLayout.setVerticalGroup(
@@ -264,7 +267,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                             .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -305,14 +308,37 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             Object carMake = this.carMake.getSelectedItem();
             Object carYear = this.carYear.getSelectedItem();
 
-            if(carMake != null && carModel != null && carYear != null) { //if not null, let's update the year menu
+            if (carMake != null && carModel != null && carYear != null) { //if not null, let's update the year menu
                 jTable_enginePart.setModel(DbUtils.resultSetToTableModel(Table_carEngineDesc.table_carEngineDesc(carMake.toString(), carModel.toString(), carYear.toString())));
+                jTable_enginePart.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        if (e.getClickCount() == 2) {
+                            JTable target = (JTable) e.getSource();
+                            int row = target.getSelectedRow();
+                            System.out.println("Double clicked");
+                        }
+                    }
+                });
+                jTable_enginePart.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enter");
+                jTable_enginePart.getActionMap().put("enter", new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JTable target = (JTable) e.getSource();
+                        int row = target.getSelectedRow();
+                        System.out.println("Pressed enter");
+                    }
+                });
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println("ERROR:" + e.toString());
         }
     }//GEN-LAST:event_carYearActionPerformed
-
+    
+    private void engineSelectAction() {
+        
+    }
+    
     private void carModelChanged(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_carModelChanged
         //update the year drop down if the car make and model drop downs have changed and are populated
         carYear.setEnabled(false);
@@ -348,11 +374,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             Object carModel = this.carModel.getSelectedItem();
             Object carMake = this.carMake.getSelectedItem();
 
-            if(carMake != null && carModel != null) { //if not null, let's update the year menu
+            if (carMake != null && carModel != null) { //if not null, let's update the year menu
                 System.out.println("attempting to update car year for: " + carMake.toString() + " , " + carModel.toString());
                 carYear.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carYears(carMake.toString(), carModel.toString())));
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println(e.toString());
         }
         carYear.setEnabled(true);
@@ -401,7 +427,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 new CarPartMainScreen().setVisible(true);
             }
         });
-        
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -411,11 +436,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frameMaker;
     private javax.swing.JInternalFrame frameVendor;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -426,6 +446,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable_engineDesc;
     private javax.swing.JTable jTable_enginePart;
+    private javax.swing.JLabel lblCarMake;
+    private javax.swing.JLabel lblCarModel;
+    private javax.swing.JLabel lblEngineDesc;
+    private javax.swing.JLabel lblEnginePart;
+    private javax.swing.JLabel lblModelYear;
     private javax.swing.JComboBox partNumberComboBox;
     private javax.swing.JComboBox partVendorComboBox;
     private javax.swing.JTabbedPane tabMaker;

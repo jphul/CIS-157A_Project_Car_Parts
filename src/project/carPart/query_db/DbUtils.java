@@ -16,9 +16,8 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-
 public class DbUtils {
-    
+
     public static TableModel resultSetToTableModel(ResultSet rs) {
         try {
             ResultSetMetaData metaData = rs.getMetaData();
@@ -43,7 +42,13 @@ public class DbUtils {
                 rows.addElement(newRow);
             }
 
-            return new DefaultTableModel(rows, columnNames);
+            return new DefaultTableModel(rows, columnNames) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all cells false
+                    return false;
+                }
+            };
         } catch (Exception e) {
             e.printStackTrace();
 
