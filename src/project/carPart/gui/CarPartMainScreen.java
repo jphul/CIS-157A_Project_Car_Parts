@@ -316,7 +316,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                         if (e.getClickCount() == 2) {
                             JTable target = (JTable) e.getSource();
                             int row = target.getSelectedRow();
-                            System.out.println("Double clicked");
+                            DBQuery.getPartVendorQuery(target.getModel().getValueAt(row, DBQuery.RLINKCOL).toString());
                         }
                     }
                 });
@@ -326,7 +326,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent e) {
                         JTable target = (JTable) e.getSource();
                         int row = target.getSelectedRow();
-                        System.out.println("Pressed enter");
+                        DBQuery.getPartVendorQuery(target.getModel().getValueAt(row, DBQuery.RLINKCOL).toString());
                     }
                 });
             }
@@ -334,11 +334,10 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             System.err.println("ERROR:" + e.toString());
         }
     }//GEN-LAST:event_carYearActionPerformed
-    
+
     private void engineSelectAction() {
-        
     }
-    
+
     private void carModelChanged(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_carModelChanged
         //update the year drop down if the car make and model drop downs have changed and are populated
         carYear.setEnabled(false);

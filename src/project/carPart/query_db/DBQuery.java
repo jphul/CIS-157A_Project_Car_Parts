@@ -10,6 +10,7 @@ import java.sql.*;
  * @author Jerry Phul
  */
 public class DBQuery {
+    public static int RLINKCOL = 4;
     
     //private static ResultSet DBQuery() {
     private static ResultSet DBQuery(String query) {
@@ -60,11 +61,18 @@ public class DBQuery {
     public static ResultSet getYears(String carMake, String carModel) {
         return DBQuery(getYearQuery(carMake, carModel));
     }
+    
+    // this will need to be renamed
+    public static String getPartVendorQuery(String rlink) {
+        String query = "select * from radcrx where rlink=" + rlink;
+        System.out.println(query);
+        return query;
+    }
 
     private static String getEngDescQuery(String carMake, String carModel, String carYear) {
         //String query = "select description, litres as ltr, engine_type as ENG, Cubic_inches as CID, RLINK from aplche where model='BEL AIR' and year=74";
         String query = "select description, litres as ltr, engine_type as ENG, Cubic_inches as CID, RLINK from APL" + carMake + " where model='" + carModel + "' and year=" + carYear;
-        System.err.println(query);
+        System.out.println(query);
         return query;
     }
     
