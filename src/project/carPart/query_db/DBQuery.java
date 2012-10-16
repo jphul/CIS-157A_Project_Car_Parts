@@ -61,13 +61,6 @@ public class DBQuery {
     public static ResultSet getYears(String carMake, String carModel) {
         return DBQuery(getYearQuery(carMake, carModel));
     }
-    
-    // this will need to be renamed
-    public static String getPartVendorQuery(String rlink) {
-        String query = "select * from radcrx where rlink=" + rlink;
-        System.out.println(query);
-        return query;
-    }
 
     private static String getEngDescQuery(String carMake, String carModel, String carYear) {
         //String query = "select description, litres as ltr, engine_type as ENG, Cubic_inches as CID, RLINK from aplche where model='BEL AIR' and year=74";
@@ -80,7 +73,7 @@ public class DBQuery {
     public static ResultSet getTableEngineDesc(String carMake, String carModel, String carYear) {
         return DBQuery(getEngDescQuery(carMake, carModel, carYear));
     }
-
+    
     private static String getPartQuery(int partNumber) {
         String query = "select * from rdimmod where P_Number in (select MOD4 from radcrx where rlink=" + partNumber + ")";
         System.out.println(query);
@@ -103,6 +96,17 @@ public class DBQuery {
         return query;
     }
 
+    public static ResultSet getVendors(String rlink) 
+    {
+        return DBQuery(getVendorsQuery(rlink));
+    }
+
+    private static String getVendorsQuery(String rlink) 
+    {
+        String query = "select * from radcrx where rlink=" + rlink;
+        System.out.println(query);
+        return query;
+    }
     
     // ........................ M A I N M E T H O D ............................//
     /**
