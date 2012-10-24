@@ -97,24 +97,26 @@ public class Menu_carMake {
             rs = DBQuery.getVendors(rlink);
             rsmd = rs.getMetaData();
             numCols = rsmd.getColumnCount();
-
+            
             while (rs.next()) {
                 // list all vendors that have a part for this car
                 while (i <= numCols) {
                     if (i >= START_ARS && i <= END_ARS && rs.getString(i) != null) {
                         resultString.add(rsmd.getColumnName(i).substring(0, 3));
-                        i = 6;
+                        i = START_MOD;
                     } else if (i >= START_MOD && i <= END_MOD && rs.getString(i) != null) {
                         resultString.add(rsmd.getColumnName(i).substring(0, 3));
-                        i = 10;
+                        i = START_BEH;
                     } else if (i >= START_BEH && i <= END_BEH && rs.getString(i) != null) {
                         resultString.add(rsmd.getColumnName(i).substring(0, 3));
-                        i = 14;
+                        i = START_DAN;
                     } else if (i >= START_DAN && i <= END_DAN && rs.getString(i) != null) {
                         resultString.add(rsmd.getColumnName(i).substring(0, 3));
+                        i = numCols + 1;
                     } else {
                         i++;
                     }
+                    System.out.println(i);
                 }
             }
         } catch (Exception e) {

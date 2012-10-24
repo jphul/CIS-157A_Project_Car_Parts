@@ -525,7 +525,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
                 System.out.println("attempting to get description for part: " + carPart.toString());
                 jTable_partDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc(cmbVendor.getSelectedItem().toString(), carPart.toString())));
-                //System.out.println("next query will be: select * from RDIM" + cmbVendor.getSelectedItem().toString() + " where p_number=" + cmbPart.getSelectedItem().toString());
             }
         } catch (Exception e) {
             System.err.println("ERROR: in cmbPartItemStateChanged: " + e.toString());
