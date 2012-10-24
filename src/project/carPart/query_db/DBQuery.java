@@ -108,6 +108,15 @@ public class DBQuery {
         return query;
     }
     
+    public static ResultSet getPartDesc(String vendor, String part) {
+        return DBQuery(getPartDescQuery(vendor, part));
+    }
+
+    private static String getPartDescQuery(String vendor, String part) {
+        String query = "select * from RDIM" + vendor + " where p_number=" + part;
+        System.out.println(query);
+        return query;
+    }
     // ........................ M A I N M E T H O D ............................//
     /**
     * @param args

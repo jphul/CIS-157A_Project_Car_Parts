@@ -475,14 +475,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1) {
             try {
                 //grab the values as objects from the drop downs
-                Object carPart = cmbVendor.getSelectedItem();
+                Object carPartVendor = cmbVendor.getSelectedItem();
 
-                System.out.println("attempting to get parts for: " + carPart.toString());
+                System.out.println("attempting to get parts for: " + carPartVendor.toString());
                 String rlink = jTable_engineDesc.getModel().getValueAt(jTable_engineDesc.getSelectedRow(), DBQuery.RLINKCOL).toString();
-                cmbPart.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_part(carPart.toString(), rlink)));
+                cmbPart.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_part(carPartVendor.toString(), rlink)));
                 cmbPart.setSelectedIndex(-1);
             } catch (Exception e) {
-                System.err.println("ERROR in cmbVendorPropertyChange: " + e.toString());
+                System.err.println("ERROR in cmbVendorItemStateChanged: " + e.toString());
             }
             cmbPart.setEnabled(true);
         }
@@ -493,13 +493,20 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void cmbPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPartActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_cmbPartActionPerformed
 
     private void cmbPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPartItemStateChanged
-        // TODO add your handling code here:
-        if (this.cmbPart.getSelectedItem() != null)
-            System.out.println("next query will be: select * from RDIM" + this.cmbVendor.getSelectedItem().toString() + " where p_number=" + this.cmbPart.getSelectedItem().toString());
+        try {
+            if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1 && cmbPart.getSelectedItem() != null) {
+                Object carPart = cmbPart.getSelectedItem();
+
+                System.out.println("attempting to get description for part: " + carPart.toString());
+                jTable_partDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc(cmbVendor.getSelectedItem().toString(), carPart.toString())));
+                //System.out.println("next query will be: select * from RDIM" + cmbVendor.getSelectedItem().toString() + " where p_number=" + cmbPart.getSelectedItem().toString());
+            }
+        } catch (Exception e) {
+            System.err.println("ERROR: in cmbPartItemStateChanged: " + e.toString());
+        }
     }//GEN-LAST:event_cmbPartItemStateChanged
 
     private void cmbPartPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbPartPropertyChange

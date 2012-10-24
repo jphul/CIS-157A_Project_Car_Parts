@@ -155,4 +155,21 @@ public class Menu_carMake {
         Object[] resultArray = resultString.toArray();
         return resultArray;
     }
+    public static Object[] menu_partDesc(String vendor, String part) {
+        ResultSet rs;
+        ArrayList resultString = new ArrayList();
+        Object[] resultArray = null;
+        
+        try {
+            rs = DBQuery.getPartDesc(vendor, part);
+            while (rs.next()) {
+                resultString.add(rs.getString(1));
+            }
+            resultArray = resultString.toArray();
+        } catch (Exception e) {
+            System.err.print("ERROR: " + e.toString());
+        }
+
+        return resultArray;
+    }
 }
