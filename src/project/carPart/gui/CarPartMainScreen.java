@@ -139,6 +139,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         });
 
         jTable_engineDesc.setFont(jTable_engineDesc.getFont().deriveFont(jTable_engineDesc.getFont().getStyle() & ~java.awt.Font.BOLD));
+        jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         pane_engineDesc.setViewportView(jTable_engineDesc);
 
         lblEngineDesc.setFont(lblEngineDesc.getFont().deriveFont(lblEngineDesc.getFont().getStyle() | java.awt.Font.BOLD));
@@ -148,6 +156,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         lblEnginePart.setText("Part Description");
 
         jTable_partDesc.setFont(jTable_partDesc.getFont().deriveFont(jTable_partDesc.getFont().getStyle() & ~java.awt.Font.BOLD));
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         pane_partDesc.setViewportView(jTable_partDesc);
 
         lblVendor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -499,7 +515,17 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private void cmbPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPartItemStateChanged
         // TODO add your handling code here:
         if (this.cmbPart.getSelectedItem() != null)
-            System.out.println("next query will be: select * from RDIM" + this.cmbVendor.getSelectedItem().toString() + " where p_number=" + this.cmbPart.getSelectedItem().toString());
+        {
+            TableModel newModel = DBQuery.getPartRows(this.cmbVendor.getSelectedItem().toString(),this.cmbPart.getSelectedItem().toString());
+            // add code to update the JTable underneath
+            if(newModel != null)
+            {
+                System.out.println("New car part table has " + newModel.getColumnCount() + " columns.");
+                System.out.println("New car part table has " + newModel.getRowCount() + " rows.");
+                this.jTable_partDesc = new JTable(newModel);
+                this.jTable_partDesc.repaint();
+            }
+        }
     }//GEN-LAST:event_cmbPartItemStateChanged
 
     private void cmbPartPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbPartPropertyChange
