@@ -139,6 +139,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         });
 
         jTable_engineDesc.setFont(jTable_engineDesc.getFont().deriveFont(jTable_engineDesc.getFont().getStyle() & ~java.awt.Font.BOLD));
+        jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         pane_engineDesc.setViewportView(jTable_engineDesc);
 
         lblEngineDesc.setFont(lblEngineDesc.getFont().deriveFont(lblEngineDesc.getFont().getStyle() | java.awt.Font.BOLD));
@@ -148,6 +156,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         lblEnginePart.setText("Part Description");
 
         jTable_partDesc.setFont(jTable_partDesc.getFont().deriveFont(jTable_partDesc.getFont().getStyle() & ~java.awt.Font.BOLD));
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         pane_partDesc.setViewportView(jTable_partDesc);
 
         lblVendor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -164,26 +180,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 cmbVendorActionPerformed(evt);
             }
         });
-        cmbVendor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cmbVendorPropertyChange(evt);
-            }
-        });
 
         cmbPart.setEnabled(false);
         cmbPart.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbPartItemStateChanged(evt);
-            }
-        });
-        cmbPart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbPartActionPerformed(evt);
-            }
-        });
-        cmbPart.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cmbPartPropertyChange(evt);
             }
         });
 
@@ -350,7 +351,17 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void carMakeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_carMakeItemStateChanged
         //Update the Car Make drop down with values from the DB
+        
         carModel.setEnabled(false);
+        
+        carYear.setEnabled(false);
+        jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel());
+        cmbVendor.setEnabled(false);
+        cmbVendor.setSelectedIndex(-1);
+        cmbPart.setEnabled(false);
+        cmbPart.setSelectedIndex(-1);
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
+        
         try {
             carModel.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carModel(carMake.getSelectedItem().toString())));
             carModel.setSelectedIndex(-1);
@@ -363,6 +374,13 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void carYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carYearActionPerformed
         // TODO add your handling code here:
+        
+        cmbVendor.setEnabled(false);
+        cmbVendor.setSelectedIndex(-1);
+        cmbPart.setEnabled(false);
+        cmbPart.setSelectedIndex(-1);
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
+        
         try {
             //grab the values as objects from the drop downs
             Object carModel = this.carModel.getSelectedItem();
@@ -412,6 +430,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private void carModelChanged(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_carModelChanged
         //update the year drop down if the car make and model drop downs have changed and are populated
         carYear.setEnabled(false);
+        
         try {
             //grab the values as objects from the drop downs
             Object carModel = this.carModel.getSelectedItem();
@@ -439,6 +458,14 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private void carModelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_carModelItemStateChanged
         // TODO add your handling code here:
         carYear.setEnabled(false);
+        
+        jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel());
+        cmbVendor.setEnabled(false);
+        cmbVendor.setSelectedIndex(-1);
+        cmbPart.setEnabled(false);
+        cmbPart.setSelectedIndex(-1);
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
+        
         try {
             //grab the values as objects from the drop downs
             Object carModel = this.carModel.getSelectedItem();
@@ -471,7 +498,10 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void cmbVendorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbVendorItemStateChanged
         cmbPart.setEnabled(false);
-
+        
+        cmbPart.setModel(new javax.swing.DefaultComboBoxModel());
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel()); // clears table
+        
         if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1) {
             try {
                 //grab the values as objects from the drop downs
@@ -488,13 +518,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbVendorItemStateChanged
 
-    private void cmbVendorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbVendorPropertyChange
-    }//GEN-LAST:event_cmbVendorPropertyChange
-
-    private void cmbPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPartActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPartActionPerformed
-
     private void cmbPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPartItemStateChanged
         try {
             if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1 && cmbPart.getSelectedItem() != null) {
@@ -508,10 +531,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             System.err.println("ERROR: in cmbPartItemStateChanged: " + e.toString());
         }
     }//GEN-LAST:event_cmbPartItemStateChanged
-
-    private void cmbPartPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbPartPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPartPropertyChange
 
     /**
      * @param args the command line arguments
