@@ -5,6 +5,8 @@
 package project.carPart.query_db;
 
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 /**
  *
  * @author Jerry Phul
@@ -82,6 +84,14 @@ public class DBQuery {
     
     public static ResultSet getTablePartDesc(int partNumber) {
         return DBQuery(getPartQuery(partNumber));
+    }
+    
+    public static TableModel getPartRows(String vendor, String partNumber)
+    {
+        String query = "select * from RDIM" +  vendor + " where p_number=" + partNumber;
+        System.out.println(query);
+        ResultSet rs = DBQuery(query);
+        return DbUtils.resultSetToTableModel(rs);
     }
 
     public static ResultSet getVendorPartNumbers(String vendorName) 
