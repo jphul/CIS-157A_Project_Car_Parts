@@ -116,7 +116,6 @@ public class Menu_carMake {
                     } else {
                         i++;
                     }
-                    System.out.println(i);
                 }
             }
         } catch (Exception e) {
