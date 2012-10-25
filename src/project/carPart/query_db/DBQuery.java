@@ -66,7 +66,7 @@ public class DBQuery {
 
     private static String getEngDescQuery(String carMake, String carModel, String carYear) {
         //String query = "select description, litres as ltr, engine_type as ENG, Cubic_inches as CID, RLINK from aplche where model='BEL AIR' and year=74";
-        String query = "select description, litres as ltr, engine_type as ENG, Cubic_inches as CID, RLINK from APL" + carMake + " where model='" + carModel + "' and year=" + carYear;
+        String query = "select description, litres as ltr, engine_type as ENG, Cubic_inches as CID, RLINK from APL" + carMake + " where model='" + carModel + "' and year='" + carYear + "'";
         System.out.println(query);
         return query;
     }
