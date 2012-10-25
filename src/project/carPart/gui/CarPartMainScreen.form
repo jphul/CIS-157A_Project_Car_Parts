@@ -432,6 +432,7 @@
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vendors"/>
+                <Property name="name" type="java.lang.String" value="vendorLabel" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="partVendorComboBox">
@@ -443,6 +444,8 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="partVendorComboBoxItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="partVendorComboBoxActionPerformed"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="partVendorComboBoxFocusLost"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="partVendorComboBoxKeyReleased"/>
               </Events>
             </Component>
@@ -471,12 +474,7 @@
             <Component class="javax.swing.JComboBox" name="partNumberComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="partNumberComboBox" noResource="true"/>
               </Properties>
@@ -487,6 +485,7 @@
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Part Number"/>
+                <Property name="name" type="java.lang.String" value="partNumberLabel" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
