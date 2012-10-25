@@ -265,12 +265,23 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Vendors");
+        jLabel7.setName("vendorLabel"); // NOI18N
 
         partVendorComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_partVendors()));
         partVendorComboBox.setName("vendorComboBox"); // NOI18N
         partVendorComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 partVendorComboBoxItemStateChanged(evt);
+            }
+        });
+        partVendorComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partVendorComboBoxActionPerformed(evt);
+            }
+        });
+        partVendorComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                partVendorComboBoxFocusLost(evt);
             }
         });
         partVendorComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -293,11 +304,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         jTable2.setCellSelectionEnabled(true);
         jScrollPane4.setViewportView(jTable2);
 
-        partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         partNumberComboBox.setName("partNumberComboBox"); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Part Number");
+        jLabel8.setName("partNumberLabel"); // NOI18N
 
         javax.swing.GroupLayout frameVendorLayout = new javax.swing.GroupLayout(frameVendor.getContentPane());
         frameVendor.getContentPane().setLayout(frameVendorLayout);
@@ -487,8 +498,18 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void partVendorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_partVendorComboBoxItemStateChanged
         // TODO add your handling code here:
-        String currentSelectedPartVendor = this.partVendorComboBox.getSelectedItem().toString();
-        this.partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_PartNumbers(currentSelectedPartVendor)));
+        String[] listItems = {"Item 1", "Item 2", "Item 3", "Item 4"};
+        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("MOD"))
+            listItems = this.modParts;
+        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("ARS"))
+            listItems = this.arsParts;
+        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("BEH"))
+            listItems = this.behParts;
+        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("DAN"))
+            listItems = this.danParts;
+        this.partNumberComboBox.setModel(new DefaultComboBoxModel(listItems));
+        //String currentSelectedPartVendor = this.partVendorComboBox.getSelectedItem().toString();
+        //this.partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_PartNumbers(currentSelectedPartVendor)));
     }//GEN-LAST:event_partVendorComboBoxItemStateChanged
 
     private void cmbVendorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVendorActionPerformed
@@ -530,6 +551,16 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             System.err.println("ERROR: in cmbPartItemStateChanged: " + e.toString());
         }
     }//GEN-LAST:event_cmbPartItemStateChanged
+
+    private void partVendorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partVendorComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_partVendorComboBoxActionPerformed
+
+    private void partVendorComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_partVendorComboBoxFocusLost
+        // TODO add your handling code here:
+        // update the list of part numbers
+
+    }//GEN-LAST:event_partVendorComboBoxFocusLost
 
     /**
      * @param args the command line arguments
@@ -596,4 +627,8 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox partVendorComboBox;
     private javax.swing.JTabbedPane tabMaker;
     // End of variables declaration//GEN-END:variables
+        String[] arsParts = {"ARS1", "ARS2", "ARS3", "ARS4"};
+        String[] modParts = {"MOD1", "MOD2", "MOD3", "MOD4"};
+        String[] behParts = {"BEH1", "BEH2", "BEH3", "BEH4"};
+        String[] danParts = {"DAN1", "DAN2", "DAN3", "DAN4"};
 }
