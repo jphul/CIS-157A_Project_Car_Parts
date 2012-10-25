@@ -57,12 +57,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabMaker" min="-2" pref="800" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="tabMaker" min="-2" pref="966" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabMaker" alignment="0" pref="470" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="tabMaker" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -133,7 +139,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="369" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -169,7 +175,7 @@
                           <Component id="cmbVendor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbPart" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                       <Component id="lblEnginePart" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pane_partDesc" min="-2" pref="110" max="-2" attributes="0"/>
@@ -388,16 +394,33 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          <Component id="partVendorComboBox" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="vendorVendorLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="partVendorComboBox" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="partNumberComboBox" max="32767" attributes="0"/>
+                                  <Component id="vendorPartNumberLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="vendorRlinkLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="vendorRlinkTextArea" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="vendorPartSearchButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="544" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="partNumberComboBox" max="32767" attributes="0"/>
-                          <Component id="jLabel8" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane4" min="-2" pref="617" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -406,27 +429,26 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendorVendorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendorPartNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendorRlinkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="partVendorComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="partNumberComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane4" pref="364" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="partVendorComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="partNumberComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendorRlinkTextArea" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendorPartSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="346" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="vendorVendorLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -444,9 +466,6 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="partVendorComboBoxItemStateChanged"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="partVendorComboBoxActionPerformed"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="partVendorComboBoxFocusLost"/>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="partVendorComboBoxKeyReleased"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane4">
@@ -459,14 +478,78 @@
                 <Component class="javax.swing.JTable" name="jTable2">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="10" rowCount="4">
+                        <Column editable="true" title="P_NUMBER" type="java.lang.Object"/>
+                        <Column editable="true" title="CORE" type="java.lang.Object"/>
+                        <Column editable="true" title="INHEAD" type="java.lang.Object"/>
+                        <Column editable="true" title="OUTHEAD" type="java.lang.Object"/>
+                        <Column editable="true" title="INCON" type="java.lang.Object"/>
+                        <Column editable="true" title="OUCON" type="java.lang.Object"/>
+                        <Column editable="true" title="TMOUNT" type="java.lang.Object"/>
+                        <Column editable="true" title="OILCOOL" type="java.lang.Object"/>
+                        <Column editable="true" title="PRICE" type="java.lang.Object"/>
+                        <Column editable="true" title="AMOUNT" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="cellSelectionEnabled" type="boolean" value="true"/>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="2">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="vendorPartListTable" noResource="true"/>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -479,7 +562,7 @@
                 <Property name="name" type="java.lang.String" value="partNumberComboBox" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="vendorPartNumberLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -487,6 +570,32 @@
                 <Property name="text" type="java.lang.String" value="Part Number"/>
                 <Property name="name" type="java.lang.String" value="partNumberLabel" noResource="true"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="vendorRlinkTextArea">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vendor Rlink #"/>
+                <Property name="name" type="java.lang.String" value="vendorRlinkTextField" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="vendorRlinkLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Rlink"/>
+                <Property name="name" type="java.lang.String" value="vendorRlinkLabel" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+            </Component>
+            <Component class="javax.swing.JButton" name="vendorPartSearchButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Search!"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendorPartSearchButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -10,6 +10,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 /**
  *
@@ -60,12 +62,15 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         cmbPart = new javax.swing.JComboBox();
         lblPart = new javax.swing.JLabel();
         frameVendor = new javax.swing.JInternalFrame();
-        jLabel7 = new javax.swing.JLabel();
+        vendorVendorLabel = new javax.swing.JLabel();
         partVendorComboBox = new javax.swing.JComboBox();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         partNumberComboBox = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
+        vendorPartNumberLabel = new javax.swing.JLabel();
+        vendorRlinkTextArea = new javax.swing.JTextField();
+        vendorRlinkLabel = new javax.swing.JLabel();
+        vendorPartSearchButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -224,7 +229,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPart)
                                     .addComponent(cmbPart, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 203, Short.MAX_VALUE)))
+                        .addGap(0, 369, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         frameMakerLayout.setVerticalGroup(
@@ -252,7 +257,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbVendor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(lblEnginePart)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pane_partDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,9 +268,9 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         frameVendor.setVisible(true);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("Vendors");
-        jLabel7.setName("vendorLabel"); // NOI18N
+        vendorVendorLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        vendorVendorLabel.setText("Vendors");
+        vendorVendorLabel.setName("vendorLabel"); // NOI18N
 
         partVendorComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_partVendors()));
         partVendorComboBox.setName("vendorComboBox"); // NOI18N
@@ -274,41 +279,42 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 partVendorComboBoxItemStateChanged(evt);
             }
         });
-        partVendorComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                partVendorComboBoxActionPerformed(evt);
-            }
-        });
-        partVendorComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                partVendorComboBoxFocusLost(evt);
-            }
-        });
-        partVendorComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                partVendorComboBoxKeyReleased(evt);
-            }
-        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "P_NUMBER", "CORE", "INHEAD", "OUTHEAD", "INCON", "OUCON", "TMOUNT", "OILCOOL", "PRICE", "AMOUNT"
             }
         ));
         jTable2.setCellSelectionEnabled(true);
+        jTable2.setName("vendorPartListTable"); // NOI18N
         jScrollPane4.setViewportView(jTable2);
+        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         partNumberComboBox.setName("partNumberComboBox"); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setText("Part Number");
-        jLabel8.setName("partNumberLabel"); // NOI18N
+        vendorPartNumberLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        vendorPartNumberLabel.setText("Part Number");
+        vendorPartNumberLabel.setName("partNumberLabel"); // NOI18N
+
+        vendorRlinkTextArea.setText("Vendor Rlink #");
+        vendorRlinkTextArea.setName("vendorRlinkTextField"); // NOI18N
+
+        vendorRlinkLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        vendorRlinkLabel.setText("Rlink");
+        vendorRlinkLabel.setName("vendorRlinkLabel"); // NOI18N
+
+        vendorPartSearchButton.setText("Search!");
+        vendorPartSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendorPartSearchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout frameVendorLayout = new javax.swing.GroupLayout(frameVendor.getContentPane());
         frameVendor.getContentPane().setLayout(frameVendorLayout);
@@ -317,32 +323,47 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             .addGroup(frameVendorLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(partNumberComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4)
+                    .addGroup(frameVendorLayout.createSequentialGroup()
+                        .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vendorVendorLabel)
+                            .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(partNumberComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vendorPartNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frameVendorLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(vendorRlinkLabel))
+                            .addGroup(frameVendorLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(vendorPartSearchButton)))
+                        .addGap(0, 544, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         frameVendorLayout.setVerticalGroup(
             frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameVendorLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(vendorVendorLabel)
+                    .addComponent(vendorPartNumberLabel)
+                    .addComponent(vendorRlinkLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(frameVendorLayout.createSequentialGroup()
-                        .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
+                .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendorPartSearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        vendorRlinkLabel.getAccessibleContext().setAccessibleDescription("");
 
         tabMaker.addTab("Vendor", frameVendor);
 
@@ -350,11 +371,15 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabMaker, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -492,10 +517,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         carYear.setEnabled(true);
     }//GEN-LAST:event_carModelItemStateChanged
 
-    private void partVendorComboBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_partVendorComboBoxKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_partVendorComboBoxKeyReleased
-
     private void partVendorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_partVendorComboBoxItemStateChanged
         // TODO add your handling code here:
         String[] listItems = {"Item 1", "Item 2", "Item 3", "Item 4"};
@@ -543,8 +564,8 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         try {
             if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1 && cmbPart.getSelectedItem() != null) {
                 Object carPart = cmbPart.getSelectedItem();
-
-                System.out.println("attempting to get description for part: " + carPart.toString());
+ 
+               System.out.println("attempting to get description for part: " + carPart.toString());
                 jTable_partDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc(cmbVendor.getSelectedItem().toString(), carPart.toString())));
             }
         } catch (Exception e) {
@@ -552,15 +573,28 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbPartItemStateChanged
 
-    private void partVendorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partVendorComboBoxActionPerformed
+    private void vendorPartSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorPartSearchButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_partVendorComboBoxActionPerformed
+        // TEST WITH RLINK = 197
+        // 197 473 473 473 473 473 473 473 473
+        String currentVendor = this.partVendorComboBox.getSelectedItem().toString();
+        String currentVendorSubPart = this.partNumberComboBox.getSelectedItem().toString();
+        String rlink = this.vendorRlinkTextArea.getText();
+        String firstQuery = "select " + currentVendorSubPart + " from RADCRX where RLINK=" + rlink;
+        JOptionPane.showMessageDialog(null, firstQuery, "Test Query", JOptionPane.INFORMATION_MESSAGE);
 
-    private void partVendorComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_partVendorComboBoxFocusLost
-        // TODO add your handling code here:
-        // update the list of part numbers
-
-    }//GEN-LAST:event_partVendorComboBoxFocusLost
+        ResultSet rs = DBQuery.DBQuery(firstQuery);
+        try{
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            if(columnCount == 1)
+            {
+                String value = rs.getString(1);
+                String secondQuery = "select * from " + currentVendor + " where p_number = " + value;
+                JOptionPane.showMessageDialog(null, secondQuery, "Test Query", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {System.out.println("No results !");}
+		}//GEN-LAST:event_vendorPartSearchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,8 +640,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frameMaker;
     private javax.swing.JInternalFrame frameVendor;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
@@ -626,6 +658,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox partNumberComboBox;
     private javax.swing.JComboBox partVendorComboBox;
     private javax.swing.JTabbedPane tabMaker;
+    private javax.swing.JLabel vendorPartNumberLabel;
+    private javax.swing.JButton vendorPartSearchButton;
+    private javax.swing.JLabel vendorRlinkLabel;
+    private javax.swing.JTextField vendorRlinkTextArea;
+    private javax.swing.JLabel vendorVendorLabel;
     // End of variables declaration//GEN-END:variables
         String[] arsParts = {"ARS1", "ARS2", "ARS3", "ARS4"};
         String[] modParts = {"MOD1", "MOD2", "MOD3", "MOD4"};

@@ -15,7 +15,7 @@ public class DBQuery {
     public static int RLINKCOL = 4;
     
     //private static ResultSet DBQuery() {
-    private static ResultSet DBQuery(String query) {
+    public static ResultSet DBQuery(String query) {
         DBConnection dbc = new DBConnection();
         dbc.createQuery();
         dbc.setQuery(query);
