@@ -119,7 +119,6 @@ public class RLinkOperations {
                     + mod.get(3) + ")";
             stmnt.executeUpdate(statement);
             stmnt.execute("commit");
-            Log.log.add("Created new RLink #" + rlNum);
             return "Success: RLink #" + rlNum + " is created";
 
         } catch (IllegalArgumentException e) {
@@ -155,7 +154,6 @@ public class RLinkOperations {
             System.out.println(statement);
             stmnt.executeUpdate(statement);
             stmnt.execute("commit");
-            Log.log.add("Updated new RLink #" + rlS);
             return "Success: RLink #" + rl + " is updated";
 
         } catch (IllegalArgumentException e) {

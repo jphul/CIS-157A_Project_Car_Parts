@@ -272,8 +272,6 @@ public class CarDelete {
             Statement stmnt = con.createStatement();
             stmnt.executeUpdate(stmntStr);
             String result = model + " " + year + " deleted";
-            Log.log.add("Deleted a Car: " + CarDeletePanel.carChosen + " "
-                    + model + " " + year);
             return result;
 
         } catch (SQLException ex) {

@@ -37,7 +37,6 @@ public class PartOperations {
             createStatement.execute("commit");
             PartAddPanel.warning.setText(manu.substring(4) + " Part #" + pnum
                     + " added");
-            Log.log.add("Added new " + manu.substring(4) + " Part #" + pnum);
         } catch (IllegalArgumentException e) {
             PartAddPanel.warning.setText(e.getMessage());
         } catch (SQLException e) {
@@ -73,7 +72,6 @@ public class PartOperations {
             
             PartDelPanel.warning.setText(manu.substring(4) + " Part #" + pnum
                     + " deleted");
-            Log.log.add("Deleted new " + manu.substring(4) + " Part #" + pnum);
         } catch (IllegalArgumentException e) {
             PartDelPanel.warning.setText(e.getMessage());
         } catch (SQLException e) {
@@ -153,13 +151,9 @@ public class PartOperations {
             createStatement.execute("commit");
             if (pNumChanged) {
                 updateRLinkPNum(con, m, pnum, PartUpdatePanel.oldPnum);
-                Log.log.add("Updated new " + manu.substring(4) + " Part #"
-                        + PartUpdatePanel.oldPnum + " to #" + pnum);
             }
             PartUpdatePanel.warning.setText(manu.substring(4) + " Part #"
                     + pnum + " updated");
-            Log.log.add("Updated new " + manu.substring(4) + " Part #" + pnum);
-
         } catch (IllegalArgumentException e) {
             PartUpdatePanel.warning.setText(e.getMessage());
         } catch (SQLException e) {

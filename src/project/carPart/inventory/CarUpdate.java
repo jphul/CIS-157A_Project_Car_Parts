@@ -296,8 +296,6 @@ public class CarUpdate {
 
             stmnt.execute("commit");
             String result = model + " " + year + " updated";
-            Log.log.add("Updated a Car: " + CarDeletePanel.carChosen + " "
-                    + model + " " + year);
             return result;
 
         } catch (SQLException ex) {

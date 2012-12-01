@@ -305,8 +305,6 @@ public class CarInsert {
             stmnt.executeUpdate(stmntStr);
             stmnt.execute("commit");
             String result = model + " " + year + " inserted";
-            Log.log.add("Added a Car: " + CarDeletePanel.carChosen + " "
-                    + model + " " + year);
             return result;
 
         } catch (SQLException ex) {
