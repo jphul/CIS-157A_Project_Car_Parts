@@ -72,6 +72,9 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         vendorRlinkTextArea = new javax.swing.JTextField();
         vendorRlinkLabel = new javax.swing.JLabel();
         vendorPartSearchButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu_File = new javax.swing.JMenu();
+        jMenuItem_Inventory = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -230,7 +233,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPart)
                                     .addComponent(cmbPart, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 369, Short.MAX_VALUE)))
+                        .addGap(0, 377, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         frameMakerLayout.setVerticalGroup(
@@ -258,7 +261,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbVendor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(lblEnginePart)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pane_partDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,7 +345,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                                 .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
                                 .addComponent(vendorPartSearchButton)))
-                        .addGap(0, 544, Short.MAX_VALUE)))
+                        .addGap(0, 552, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         frameVendorLayout.setVerticalGroup(
@@ -359,7 +362,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                     .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorPartSearchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -368,19 +371,31 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         tabMaker.addTab("Vendor", frameVendor);
 
+        jMenu_File.setText("File");
+
+        jMenuItem_Inventory.setText("Inventory");
+        jMenuItem_Inventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_InventoryActionPerformed(evt);
+            }
+        });
+        jMenu_File.add(jMenuItem_Inventory);
+
+        jMenuBar1.add(jMenu_File);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(tabMaker, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -605,6 +620,10 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         } catch (Exception e) {System.out.println("No results ! " + e.toString());}
 		}//GEN-LAST:event_vendorPartSearchButtonActionPerformed
 
+    private void jMenuItem_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_InventoryActionPerformed
+        // inventory code will go here
+    }//GEN-LAST:event_jMenuItem_InventoryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -649,6 +668,9 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frameMaker;
     private javax.swing.JInternalFrame frameVendor;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem_Inventory;
+    private javax.swing.JMenu jMenu_File;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
