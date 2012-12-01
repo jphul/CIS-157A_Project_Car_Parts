@@ -85,7 +85,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         btn_rlink = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_modifyPart = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -421,8 +420,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         tabMaker.addTab("Inventory Management", frameVendor);
 
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -749,7 +746,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frameVendor;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
