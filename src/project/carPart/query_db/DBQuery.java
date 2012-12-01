@@ -45,7 +45,7 @@ public class DBQuery {
     }
 
     private static String getModelQuery(String carModel) {
-        String query = "select Distinct model from apl" + carModel;
+        String query = "select Distinct model from apl" + carModel + " order by model asc";
         System.out.println(query);
         return query;
     }
@@ -88,7 +88,7 @@ public class DBQuery {
     
     public static TableModel getPartRows(String vendor, String partNumber)
     {
-        String query = "select * from RDIM" +  vendor + " where p_number=" + partNumber;
+        String query = "select * from RDIM" +  vendor + " where p_number='" + partNumber + "'";
         System.out.println(query);
         ResultSet rs = DBQuery(query);
         return DbUtils.resultSetToTableModel(rs);
@@ -123,7 +123,7 @@ public class DBQuery {
     }
 
     private static String getPartDescQuery(String vendor, String part) {
-        String query = "select * from RDIM" + vendor + " where p_number=" + part;
+        String query = "select * from RDIM" + vendor + " where p_number='" + part + "'";
         System.out.println(query);
         return query;
     }
