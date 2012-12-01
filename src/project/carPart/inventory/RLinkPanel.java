@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import project.carPart.gui.CarPartMainScreen;
 
 @SuppressWarnings("serial")
 public class RLinkPanel extends JPanel {
@@ -38,6 +39,7 @@ public class RLinkPanel extends JPanel {
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 MainMenu.frameRLink.dispose();
+                CarPartMainScreen.closeJPane_RLink();
             }
         });
 

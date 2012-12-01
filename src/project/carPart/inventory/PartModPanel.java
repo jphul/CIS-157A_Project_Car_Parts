@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import project.carPart.gui.CarPartMainScreen;
 
 @SuppressWarnings("serial")
 public class PartModPanel extends JPanel {
@@ -49,6 +50,7 @@ public class PartModPanel extends JPanel {
         cancelBut.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 MainMenu.framePartMod.dispose();
+                CarPartMainScreen.closeJPane_modifyPart();
             }
         });
         add(new JLabel("Select an option    "));

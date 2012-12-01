@@ -2,6 +2,7 @@ package project.carPart.inventory;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import project.carPart.gui.*;
 
 import javax.swing.*;
 
@@ -60,6 +61,7 @@ public class CarModPanel extends JPanel {
         btnClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 MainMenu.frameCarMod.dispose();
+                CarPartMainScreen.closeJPane_modifyCar();
             }
         });
 

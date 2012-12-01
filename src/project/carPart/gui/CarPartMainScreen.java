@@ -21,6 +21,12 @@ import java.sql.ResultSetMetaData;
  */
 public class CarPartMainScreen extends javax.swing.JFrame {
 
+    static JFrame frame = new JFrame();
+    static JFrame frameRetrieve = new JFrame();
+    static JFrame frameCarMod = new JFrame();
+    static JFrame frameRLink = new JFrame();
+    static JFrame framePartMod = new JFrame();
+    static JFrame frameLog = new JFrame();
     /**
      * Creates new form CarPartMainScreen
      */
@@ -30,6 +36,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         partVendorComboBox.setSelectedIndex(-1);
         carModel.setEnabled(false);
         carYear.setEnabled(false);
+
         //TODO: Disable and then enable if engine table has data
         jTable_engineDesc.setEnabled(true);
     }
@@ -74,9 +81,11 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         vendorRlinkTextArea = new javax.swing.JTextField();
         vendorRlinkLabel = new javax.swing.JLabel();
         vendorPartSearchButton = new javax.swing.JButton();
+        btn_carModify = new javax.swing.JButton();
+        btn_rlink = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btn_modifyPart = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu_File = new javax.swing.JMenu();
-        jMenuItem_Inventory = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -271,7 +280,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tabMaker.addTab("Maker", frameMaker);
+        tabMaker.addTab("Auto Maker", frameMaker);
 
         frameVendor.setVisible(true);
 
@@ -323,6 +332,30 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             }
         });
 
+        btn_carModify.setText("Modify Car");
+        btn_carModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carModifyActionPerformed(evt);
+            }
+        });
+
+        btn_rlink.setText("Modify RLink");
+        btn_rlink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_rlinkActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("Administrative Tasks");
+
+        btn_modifyPart.setText("Modify Part");
+        btn_modifyPart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modifyPartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout frameVendorLayout = new javax.swing.GroupLayout(frameVendor.getContentPane());
         frameVendor.getContentPane().setLayout(frameVendorLayout);
         frameVendorLayout.setHorizontalGroup(
@@ -330,7 +363,9 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             .addGroup(frameVendorLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
+                    .addGroup(frameVendorLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4)
+                        .addContainerGap())
                     .addGroup(frameVendorLayout.createSequentialGroup()
                         .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(vendorVendorLabel)
@@ -341,30 +376,42 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                             .addComponent(vendorPartNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(frameVendorLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(vendorRlinkLabel))
-                            .addGroup(frameVendorLayout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(vendorPartSearchButton)))
-                        .addGap(0, 552, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(vendorPartSearchButton))
+                            .addGroup(frameVendorLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(vendorRlinkLabel)))
+                        .addGap(201, 201, 201)
+                        .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frameVendorLayout.createSequentialGroup()
+                                .addComponent(btn_carModify)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_rlink)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_modifyPart))
+                            .addComponent(jLabel1))
+                        .addGap(94, 94, Short.MAX_VALUE))))
         );
         frameVendorLayout.setVerticalGroup(
             frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameVendorLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(16, 16, 16)
                 .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vendorVendorLabel)
                     .addComponent(vendorPartNumberLabel)
-                    .addComponent(vendorRlinkLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(vendorRlinkLabel)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameVendorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(partVendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendorPartSearchButton))
+                    .addComponent(vendorPartSearchButton)
+                    .addComponent(btn_carModify)
+                    .addComponent(btn_rlink)
+                    .addComponent(btn_modifyPart))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -372,19 +419,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
         vendorRlinkLabel.getAccessibleContext().setAccessibleDescription("");
 
-        tabMaker.addTab("Vendor", frameVendor);
-
-        jMenu_File.setText("File");
-
-        jMenuItem_Inventory.setText("Inventory");
-        jMenuItem_Inventory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_InventoryActionPerformed(evt);
-            }
-        });
-        jMenu_File.add(jMenuItem_Inventory);
-
-        jMenuBar1.add(jMenu_File);
+        tabMaker.addTab("Inventory Management", frameVendor);
 
         setJMenuBar(jMenuBar1);
 
@@ -404,38 +439,126 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void carMakeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_carMakeItemStateChanged
-        //Update the Car Make drop down with values from the DB
-        
-        carModel.setEnabled(false);
-        
-        carYear.setEnabled(false);
-        jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel());
-        cmbVendor.setEnabled(false);
-        cmbVendor.setSelectedIndex(-1);
-        cmbPart.setEnabled(false);
-        cmbPart.setSelectedIndex(-1);
-        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
-        
+    private void engineSelectAction(String rlink) {
+        // will handle the selection of an engine; populate vendor pulldown     
+        cmbVendor.setEnabled(true);
         try {
-            carModel.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carModel(carMake.getSelectedItem().toString())));
-            carModel.setSelectedIndex(-1);
-            carModel.setEnabled(true);
+            cmbVendor.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_vendor(rlink)));
+            cmbVendor.setSelectedIndex(-1);
         } catch (Exception e) {
-            System.err.printf("ERROR in carMakeItemStateChanged: " + e.toString());
-            carModel.setEnabled(false);
+            System.err.printf("ERROR in engineSelectAction: " + e.toString());
         }
-    }//GEN-LAST:event_carMakeItemStateChanged
+    }
+
+    private void btn_carModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carModifyActionPerformed
+        frameCarMod = new JFrame("Modify Car");
+        frameCarMod.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameCarMod.add(new CarModPanel());
+        frameCarMod.setSize(300, 100);
+        frameCarMod.setVisible(true);
+        frameCarMod.pack();
+    }//GEN-LAST:event_btn_carModifyActionPerformed
+
+    public static void closeJPane_modifyCar() {
+        frameCarMod.dispose();
+    }
+    
+    private void vendorPartSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorPartSearchButtonActionPerformed
+        // TEST WITH RLINK = 197
+        // 197 473 473 473 473 473 473 473 473
+        String currentVendor = this.partVendorComboBox.getSelectedItem().toString();
+        String currentVendorSubPart = this.partNumberComboBox.getSelectedItem().toString();
+        String rlink = this.vendorRlinkTextArea.getText();
+        String firstQuery = "select " + currentVendorSubPart + " from RADCRX where RLINK=" + rlink;
+        System.out.println(firstQuery);
+
+        ResultSet rs = DBQuery.DBQuery(firstQuery);
+        try{
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            if(columnCount == 1)
+            {
+                String value = "";
+                while(rs.next())
+                value = rs.getString(1);
+                System.out.println(partVendorComboBox.getSelectedItem().toString() + value);
+                jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel()); // clears table
+                System.out.println("attempting to get description for part: " + value);
+                tblVendorTabPartDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc((partVendorComboBox.getSelectedItem().toString()).substring(4, 7), value)));
+            }
+        } catch (Exception e) {System.out.println("No results ! " + e.toString());}
+    }//GEN-LAST:event_vendorPartSearchButtonActionPerformed
+
+    private void partVendorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_partVendorComboBoxItemStateChanged
+        // TODO add your handling code here:
+        String[] listItems = {"Item 1", "Item 2", "Item 3", "Item 4"};
+        try {
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("MOD"))
+            listItems = this.modParts;
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("ARS"))
+            listItems = this.arsParts;
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("BEH"))
+            listItems = this.behParts;
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("DAN"))
+            listItems = this.danParts;
+            this.partNumberComboBox.setModel(new DefaultComboBoxModel(listItems));
+        }
+        catch (Exception e) {
+            System.err.println("ERROR in partVendorComboBoxItemStateChanged: " + e.toString());
+        }
+        //String currentSelectedPartVendor = this.partVendorComboBox.getSelectedItem().toString();
+        //this.partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_PartNumbers(currentSelectedPartVendor)));
+    }//GEN-LAST:event_partVendorComboBoxItemStateChanged
+
+    private void cmbPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPartItemStateChanged
+        try {
+            if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1 && cmbPart.getSelectedItem() != null) {
+                Object carPart = cmbPart.getSelectedItem();
+
+                System.out.println("attempting to get description for part: " + carPart.toString());
+                jTable_partDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc(cmbVendor.getSelectedItem().toString(), carPart.toString())));
+            }
+        } catch (Exception e) {
+            System.err.println("ERROR: in cmbPartItemStateChanged: " + e.toString());
+        }
+    }//GEN-LAST:event_cmbPartItemStateChanged
+
+    private void cmbVendorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVendorActionPerformed
+        cmbPart.setSelectedIndex(-1);
+        cmbPart.setEnabled(true);
+    }//GEN-LAST:event_cmbVendorActionPerformed
+
+    private void cmbVendorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbVendorItemStateChanged
+        cmbPart.setEnabled(false);
+
+        cmbPart.setModel(new javax.swing.DefaultComboBoxModel());
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel()); // clears table
+
+        if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1) {
+            try {
+                //grab the values as objects from the drop downs
+                Object carPartVendor = cmbVendor.getSelectedItem();
+
+                System.out.println("attempting to get parts for: " + carPartVendor.toString());
+                String rlink = jTable_engineDesc.getModel().getValueAt(jTable_engineDesc.getSelectedRow(), DBQuery.RLINKCOL).toString();
+                cmbPart.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_part(carPartVendor.toString(), rlink)));
+                cmbPart.setSelectedIndex(-1);
+            } catch (Exception e) {
+                System.err.println("ERROR in cmbVendorItemStateChanged: " + e.toString());
+            }
+            cmbPart.setEnabled(true);
+        }
+    }//GEN-LAST:event_cmbVendorItemStateChanged
 
     private void carYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carYearActionPerformed
         // TODO add your handling code here:
-        
+
         cmbVendor.setEnabled(false);
         cmbVendor.setSelectedIndex(-1);
         cmbPart.setEnabled(false);
         cmbPart.setSelectedIndex(-1);
         jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
-        
+
         try {
             //grab the values as objects from the drop downs
             Object carModel = this.carModel.getSelectedItem();
@@ -471,21 +594,37 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_carYearActionPerformed
 
-    private void engineSelectAction(String rlink) {
-        // will handle the selection of an engine; populate vendor pulldown     
-        cmbVendor.setEnabled(true);
+    private void carMakeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_carMakeItemStateChanged
+        //Update the Car Make drop down with values from the DB
+
+        carModel.setEnabled(false);
+
+        carYear.setEnabled(false);
+        jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel());
+        cmbVendor.setEnabled(false);
+        cmbVendor.setSelectedIndex(-1);
+        cmbPart.setEnabled(false);
+        cmbPart.setSelectedIndex(-1);
+        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
+
         try {
-            cmbVendor.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_vendor(rlink)));
-            cmbVendor.setSelectedIndex(-1);
+            carModel.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carModel(carMake.getSelectedItem().toString())));
+            carModel.setSelectedIndex(-1);
+            carModel.setEnabled(true);
         } catch (Exception e) {
-            System.err.printf("ERROR in engineSelectAction: " + e.toString());
+            System.err.printf("ERROR in carMakeItemStateChanged: " + e.toString());
+            carModel.setEnabled(false);
         }
-    }
+    }//GEN-LAST:event_carMakeItemStateChanged
+
+    private void populateCarMakeMenu(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_populateCarMakeMenu
+        carMake.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carMake()));
+    }//GEN-LAST:event_populateCarMakeMenu
 
     private void carModelChanged(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_carModelChanged
         //update the year drop down if the car make and model drop downs have changed and are populated
         carYear.setEnabled(false);
-        
+
         try {
             //grab the values as objects from the drop downs
             Object carModel = this.carModel.getSelectedItem();
@@ -506,21 +645,17 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         carYear.setEnabled(true);
     }//GEN-LAST:event_carModelActionPerformed
 
-    private void populateCarMakeMenu(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_populateCarMakeMenu
-        carMake.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_carMake()));
-    }//GEN-LAST:event_populateCarMakeMenu
-
     private void carModelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_carModelItemStateChanged
         // TODO add your handling code here:
         carYear.setEnabled(false);
-        
+
         jTable_engineDesc.setModel(new javax.swing.table.DefaultTableModel());
         cmbVendor.setEnabled(false);
         cmbVendor.setSelectedIndex(-1);
         cmbPart.setEnabled(false);
         cmbPart.setSelectedIndex(-1);
         jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel());
-        
+
         try {
             //grab the values as objects from the drop downs
             Object carModel = this.carModel.getSelectedItem();
@@ -536,98 +671,36 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         carYear.setEnabled(true);
     }//GEN-LAST:event_carModelItemStateChanged
 
-    private void partVendorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_partVendorComboBoxItemStateChanged
-        // TODO add your handling code here:
-        String[] listItems = {"Item 1", "Item 2", "Item 3", "Item 4"};
-        try {
-            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("MOD"))
-                listItems = this.modParts;
-            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("ARS"))
-                listItems = this.arsParts;
-            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("BEH"))
-                listItems = this.behParts;
-            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("DAN"))
-                listItems = this.danParts;
-            this.partNumberComboBox.setModel(new DefaultComboBoxModel(listItems));
-        }
-        catch (Exception e) {
-            System.err.println("ERROR in partVendorComboBoxItemStateChanged: " + e.toString());
-        }
-        //String currentSelectedPartVendor = this.partVendorComboBox.getSelectedItem().toString();
-        //this.partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_PartNumbers(currentSelectedPartVendor)));
-    }//GEN-LAST:event_partVendorComboBoxItemStateChanged
+    private void btn_rlinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rlinkActionPerformed
+        frameRLink = new JFrame("Modify RLink");
+        frameRLink.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameRLink.add(new RLinkPanel());
+        frameRLink.setSize(300, 100);
+        frameRLink.setVisible(true);
+        frameRLink.pack();
+    }//GEN-LAST:event_btn_rlinkActionPerformed
 
-    private void cmbVendorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVendorActionPerformed
-        cmbPart.setSelectedIndex(-1);
-        cmbPart.setEnabled(true);
-    }//GEN-LAST:event_cmbVendorActionPerformed
+    public static void closeJPane_RLink() {
+        frameRLink.dispose();
+    }
 
-    private void cmbVendorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbVendorItemStateChanged
-        cmbPart.setEnabled(false);
-        
-        cmbPart.setModel(new javax.swing.DefaultComboBoxModel());
-        jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel()); // clears table
-        
-        if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1) {
-            try {
-                //grab the values as objects from the drop downs
-                Object carPartVendor = cmbVendor.getSelectedItem();
+    private void btn_modifyPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifyPartActionPerformed
+        framePartMod = new JFrame("Modify Part");
+        framePartMod.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        framePartMod.add(new PartModPanel());
+        framePartMod.setSize(800, 450);
+        framePartMod.setVisible(true);
+        framePartMod.pack();
+    }//GEN-LAST:event_btn_modifyPartActionPerformed
+    
+    public static void closeJPane_modifyPart() {
+        framePartMod.dispose();
+    }
+    
 
-                System.out.println("attempting to get parts for: " + carPartVendor.toString());
-                String rlink = jTable_engineDesc.getModel().getValueAt(jTable_engineDesc.getSelectedRow(), DBQuery.RLINKCOL).toString();
-                cmbPart.setModel(new javax.swing.DefaultComboBoxModel(Menu_carMake.menu_part(carPartVendor.toString(), rlink)));
-                cmbPart.setSelectedIndex(-1);
-            } catch (Exception e) {
-                System.err.println("ERROR in cmbVendorItemStateChanged: " + e.toString());
-            }
-            cmbPart.setEnabled(true);
-        }
-    }//GEN-LAST:event_cmbVendorItemStateChanged
-
-    private void cmbPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPartItemStateChanged
-        try {
-            if (carMake.getSelectedItem() != null && carModel.getSelectedItem() != null && carYear.getSelectedItem() != null && jTable_engineDesc.getSelectedRow() != -1 && cmbPart.getSelectedItem() != null) {
-                Object carPart = cmbPart.getSelectedItem();
+    
+    
  
-               System.out.println("attempting to get description for part: " + carPart.toString());
-                jTable_partDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc(cmbVendor.getSelectedItem().toString(), carPart.toString())));
-            }
-        } catch (Exception e) {
-            System.err.println("ERROR: in cmbPartItemStateChanged: " + e.toString());
-        }
-    }//GEN-LAST:event_cmbPartItemStateChanged
-
-    private void vendorPartSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorPartSearchButtonActionPerformed
-        // TEST WITH RLINK = 197
-        // 197 473 473 473 473 473 473 473 473
-        String currentVendor = this.partVendorComboBox.getSelectedItem().toString();
-        String currentVendorSubPart = this.partNumberComboBox.getSelectedItem().toString();
-        String rlink = this.vendorRlinkTextArea.getText();
-        String firstQuery = "select " + currentVendorSubPart + " from RADCRX where RLINK=" + rlink;
-        System.out.println(firstQuery);
-        
-        ResultSet rs = DBQuery.DBQuery(firstQuery);
-        try{
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int columnCount = rsmd.getColumnCount();
-            if(columnCount == 1)
-            {
-                String value = "";
-                while(rs.next())
-                    value = rs.getString(1);
-                System.out.println(partVendorComboBox.getSelectedItem().toString() + value);
-                jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel()); // clears table
-                System.out.println("attempting to get description for part: " + value);
-                tblVendorTabPartDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc((partVendorComboBox.getSelectedItem().toString()).substring(4, 7), value)));
-            }
-        } catch (Exception e) {System.out.println("No results ! " + e.toString());}
-		}//GEN-LAST:event_vendorPartSearchButtonActionPerformed
-
-    private void jMenuItem_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_InventoryActionPerformed
-        // inventory code will go here
-        MainMenu m = new MainMenu();
-    }//GEN-LAST:event_jMenuItem_InventoryActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -664,6 +737,9 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_carModify;
+    private javax.swing.JButton btn_modifyPart;
+    private javax.swing.JButton btn_rlink;
     private javax.swing.JComboBox carMake;
     private javax.swing.JComboBox carModel;
     private javax.swing.JComboBox carYear;
@@ -672,9 +748,8 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frameMaker;
     private javax.swing.JInternalFrame frameVendor;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem_Inventory;
-    private javax.swing.JMenu jMenu_File;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
