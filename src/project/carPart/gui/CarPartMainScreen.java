@@ -25,6 +25,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     public CarPartMainScreen() {
         initComponents();
         carMake.setSelectedIndex(-1);
+        partVendorComboBox.setSelectedIndex(-1);
         carModel.setEnabled(false);
         carYear.setEnabled(false);
         //TODO: Disable and then enable if engine table has data
@@ -65,7 +66,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         vendorVendorLabel = new javax.swing.JLabel();
         partVendorComboBox = new javax.swing.JComboBox();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblVendorTabPartDesc = new javax.swing.JTable();
         partNumberComboBox = new javax.swing.JComboBox();
         vendorPartNumberLabel = new javax.swing.JLabel();
         vendorRlinkTextArea = new javax.swing.JTextField();
@@ -257,7 +258,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 .addGroup(frameMakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbVendor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(lblEnginePart)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pane_partDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +281,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblVendorTabPartDesc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -291,10 +292,10 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                 "P_NUMBER", "CORE", "INHEAD", "OUTHEAD", "INCON", "OUCON", "TMOUNT", "OILCOOL", "PRICE", "AMOUNT"
             }
         ));
-        jTable2.setCellSelectionEnabled(true);
-        jTable2.setName("vendorPartListTable"); // NOI18N
-        jScrollPane4.setViewportView(jTable2);
-        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblVendorTabPartDesc.setCellSelectionEnabled(true);
+        tblVendorTabPartDesc.setName("vendorPartListTable"); // NOI18N
+        jScrollPane4.setViewportView(tblVendorTabPartDesc);
+        tblVendorTabPartDesc.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         partNumberComboBox.setName("partNumberComboBox"); // NOI18N
 
@@ -358,7 +359,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
                     .addComponent(partNumberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorRlinkTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vendorPartSearchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -520,15 +521,20 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private void partVendorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_partVendorComboBoxItemStateChanged
         // TODO add your handling code here:
         String[] listItems = {"Item 1", "Item 2", "Item 3", "Item 4"};
-        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("MOD"))
-            listItems = this.modParts;
-        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("ARS"))
-            listItems = this.arsParts;
-        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("BEH"))
-            listItems = this.behParts;
-        if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("DAN"))
-            listItems = this.danParts;
-        this.partNumberComboBox.setModel(new DefaultComboBoxModel(listItems));
+        try {
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("MOD"))
+                listItems = this.modParts;
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("ARS"))
+                listItems = this.arsParts;
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("BEH"))
+                listItems = this.behParts;
+            if(this.partVendorComboBox.getSelectedItem().toString().toUpperCase().contains("DAN"))
+                listItems = this.danParts;
+            this.partNumberComboBox.setModel(new DefaultComboBoxModel(listItems));
+        }
+        catch (Exception e) {
+            System.err.println("ERROR in partVendorComboBoxItemStateChanged: " + e.toString());
+        }
         //String currentSelectedPartVendor = this.partVendorComboBox.getSelectedItem().toString();
         //this.partNumberComboBox.setModel(new javax.swing.DefaultComboBoxModel(Menu_partMake.menu_PartNumbers(currentSelectedPartVendor)));
     }//GEN-LAST:event_partVendorComboBoxItemStateChanged
@@ -574,26 +580,29 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbPartItemStateChanged
 
     private void vendorPartSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendorPartSearchButtonActionPerformed
-        // TODO add your handling code here:
         // TEST WITH RLINK = 197
         // 197 473 473 473 473 473 473 473 473
         String currentVendor = this.partVendorComboBox.getSelectedItem().toString();
         String currentVendorSubPart = this.partNumberComboBox.getSelectedItem().toString();
         String rlink = this.vendorRlinkTextArea.getText();
         String firstQuery = "select " + currentVendorSubPart + " from RADCRX where RLINK=" + rlink;
-        JOptionPane.showMessageDialog(null, firstQuery, "Test Query", JOptionPane.INFORMATION_MESSAGE);
-
+        System.out.println(firstQuery);
+        
         ResultSet rs = DBQuery.DBQuery(firstQuery);
         try{
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
             if(columnCount == 1)
             {
-                String value = rs.getString(1);
-                String secondQuery = "select * from " + currentVendor + " where p_number = " + value;
-                JOptionPane.showMessageDialog(null, secondQuery, "Test Query", JOptionPane.INFORMATION_MESSAGE);
+                String value = "";
+                while(rs.next())
+                    value = rs.getString(1);
+                System.out.println(partVendorComboBox.getSelectedItem().toString() + value);
+                jTable_partDesc.setModel(new javax.swing.table.DefaultTableModel()); // clears table
+                System.out.println("attempting to get description for part: " + value);
+                tblVendorTabPartDesc.setModel(DbUtils.resultSetToTableModel(Table_partDesc.table_partDesc((partVendorComboBox.getSelectedItem().toString()).substring(4, 7), value)));
             }
-        } catch (Exception e) {System.out.println("No results !");}
+        } catch (Exception e) {System.out.println("No results ! " + e.toString());}
 		}//GEN-LAST:event_vendorPartSearchButtonActionPerformed
 
     /**
@@ -643,7 +652,6 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable_engineDesc;
     private javax.swing.JTable jTable_partDesc;
     private javax.swing.JLabel lblCarMake;
@@ -658,6 +666,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox partNumberComboBox;
     private javax.swing.JComboBox partVendorComboBox;
     private javax.swing.JTabbedPane tabMaker;
+    private javax.swing.JTable tblVendorTabPartDesc;
     private javax.swing.JLabel vendorPartNumberLabel;
     private javax.swing.JButton vendorPartSearchButton;
     private javax.swing.JLabel vendorRlinkLabel;

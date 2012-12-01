@@ -142,7 +142,7 @@ public class Menu_carMake {
                 // list all parts for specific vendor
                 while (i <= numCols) {
                     if (vendor.compareTo(rsmd.getColumnName(i).substring(0, 3)) == 0) {
-                        if (!resultString.contains(rs.getString(i)))
+                        //if (!resultString.contains(rs.getString(i)))
                             resultString.add(rs.getString(i));
                     }
                     i++;
