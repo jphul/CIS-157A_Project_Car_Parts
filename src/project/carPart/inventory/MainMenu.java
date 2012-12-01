@@ -23,48 +23,27 @@ public class MainMenu extends JPanel {
     static JFrame frameLog = new JFrame();
 
     public MainMenu() {
-
+        frame = new JFrame("Inventory");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         JPanel panel1 = new JPanel();
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
-        panel1.add(new JLabel("CS 157A Project: Auto Parts Inventory"));
-        panel1.add(new JLabel("Professor: Dr. Lin"));
-        panel1.add(new JLabel("Group 31"));
-        panel1.add(new JLabel("\n"));
-        panel1.add(new JLabel("\n"));
-
         JPanel btnPanel = new JPanel();
-        btnPanel.setLayout(new GridLayout(6, 2));
+        btnPanel.setLayout(new GridLayout(5, 2));
 
-        JButton btnRetrieve = new JButton("Retrieve Car Part");
         JButton btnRLink = new JButton("Modify RLink");
         JButton btnCarMod = new JButton("Modify Car");
         JButton btnPartMod = new JButton("Modify Part");
-        JButton btnLog = new JButton("Show History");
-        JButton btnClose = new JButton("Exit");
+        JButton btnClose = new JButton("Close");
 
-        btnPanel.add(new JLabel("Retrieve Car Part Info    "));
-        btnPanel.add(btnRetrieve);
-        btnPanel.add(new JLabel("Add New, Delete, or Update Car    "));
+        btnPanel.add(new JLabel("Add, Delete, or Update Car    "));
         btnPanel.add(btnCarMod);
-        btnPanel.add(new JLabel("Add New or Update RLink    "));
+        btnPanel.add(new JLabel("Add or Update RLink    "));
         btnPanel.add(btnRLink);
-        btnPanel.add(new JLabel("Add New, Delete, or Update Part    "));
+        btnPanel.add(new JLabel("Add, Delete, or Update Part    "));
         btnPanel.add(btnPartMod);
-        btnPanel.add(new JLabel("Show Modification Activities    "));
-        btnPanel.add(btnLog);
         btnPanel.add(new JLabel("Wanna exit?    "));
         btnPanel.add(btnClose);
-
-        btnRetrieve.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                frameRetrieve = new JFrame("Retrieve Car Part Info");
-                frameRetrieve.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frameRetrieve.add(new RetrievePanel());
-                frameRetrieve.setSize(800, 450);
-                frameRetrieve.setVisible(true);
-
-            }
-        });
 
         btnCarMod.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -100,27 +79,17 @@ public class MainMenu extends JPanel {
             }
         });
 
-        btnLog.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                frameLog = new JFrame("History");
-                frameLog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frameLog.add(new Log());
-                frameLog.setSize(550, 300);
-                frameLog.setVisible(true);
-                frameLog.pack();
-
-            }
-        });
-
         btnClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                System.exit(0);
+                frame.dispose();
             }
         });
 
         // setLayout(new FlowLayout());
-        add(panel1, BorderLayout.NORTH);
-        add(btnPanel, BorderLayout.SOUTH);
+        frame.add(panel1, BorderLayout.NORTH);
+        frame.add(btnPanel, BorderLayout.SOUTH);
+        frame.setSize(400, 200);
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) throws Exception {

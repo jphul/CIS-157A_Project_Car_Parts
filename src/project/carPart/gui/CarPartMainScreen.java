@@ -94,6 +94,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Car Parts Database");
 
         tabMaker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -624,12 +625,7 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void jMenuItem_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_InventoryActionPerformed
         // inventory code will go here
-        JFrame frame = new JFrame("Main Menu");
-        
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new MainMenu());
-        frame.setSize(600, 300);
-        frame.setVisible(true);
+        MainMenu m = new MainMenu();
     }//GEN-LAST:event_jMenuItem_InventoryActionPerformed
 
     /**
