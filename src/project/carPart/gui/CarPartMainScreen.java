@@ -6,6 +6,8 @@ package project.carPart.gui;
 
 import project.carPart.query_db.*;
 import project.carPart.code.*;
+import project.carPart.inventory.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -622,6 +624,12 @@ public class CarPartMainScreen extends javax.swing.JFrame {
 
     private void jMenuItem_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_InventoryActionPerformed
         // inventory code will go here
+        JFrame frame = new JFrame("Main Menu");
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new MainMenu());
+        frame.setSize(600, 300);
+        frame.setVisible(true);
     }//GEN-LAST:event_jMenuItem_InventoryActionPerformed
 
     /**
