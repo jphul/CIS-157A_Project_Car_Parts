@@ -25,7 +25,7 @@ public class DBQuery {
     }
 
     private static String getMakeQuery() {
-        String query = "select distinct mshort from cmakers order by mshort ASC";
+        String query = "select distinct mshort from cmakers order by mshort asc";
         System.out.println(query);
         return query;
     }
@@ -39,13 +39,13 @@ public class DBQuery {
     }
     
     private static String getVendorQuery(){
-        String query = "select distinct NAME from PARTMAKERS";
+        String query = "select distinct name from partmakers";
         System.out.println(query);
         return query;
     }
 
     private static String getModelQuery(String carModel) {
-        String query = "select Distinct model from apl" + carModel + " order by model asc";
+        String query = "select distinct model from apl" + carModel + " order by model asc";
         System.out.println(query);
         return query;
     }
@@ -55,7 +55,7 @@ public class DBQuery {
     }
 
     private static String getYearQuery(String carMake, String carModel) {
-        String query = "select distinct year from APL" + carMake + " where MODEL='" + carModel + "'";
+        String query = "select distinct year from APL" + carMake + " where MODEL='" + carModel + "' sort by year asc";
         System.out.println(query);
         return query;
     }
@@ -101,7 +101,7 @@ public class DBQuery {
 
     private static String getPartNumberListQuery(String vendorName) 
     {
-        String query = "select unique P_NUMBER from " + vendorName;
+        String query = "select unique p_number from " + vendorName;
         System.out.println(query);
         return query;
     }
