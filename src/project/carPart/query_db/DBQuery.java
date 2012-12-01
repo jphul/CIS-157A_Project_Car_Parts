@@ -55,7 +55,7 @@ public class DBQuery {
     }
 
     private static String getYearQuery(String carMake, String carModel) {
-        String query = "select distinct year from APL" + carMake + " where MODEL='" + carModel + "' sort by year asc";
+        String query = "select distinct year from APL" + carMake + " where MODEL='" + carModel + "' order by year asc";
         System.out.println(query);
         return query;
     }
